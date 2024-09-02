@@ -50,9 +50,9 @@ python generate_samples.py --lp en-es --num_candidates 20 --gpus 1 --output_file
 
 Take a look at the samples that were generated. If you don't understand Spanish, try another language pair. How different are the samples from each other?
 
-Exercise 1: The code is using epsilon sampling. Change the code to use nucleus sampling instead. What changes do you observe?
+**Exercise 1:** The code is using epsilon sampling. Change the code to use nucleus sampling instead. What changes do you observe?
 
-Exercise 2: Implement a simple baseline with greedy decoding. Evaluate it in terms of comet using [comet-score command](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command)
+**Exercise 2:** Implement a simple baseline with greedy decoding. Evaluate it in terms of comet using [comet-score command](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command)
 
 ## MBR decoding:
 
@@ -107,12 +107,12 @@ mbrs-decode data/mbr/en-es-samples-n10.txt \
     --output data/mbr/en-es-mbr-output.txt
 ```
 
-Exercise 3: Open the report saved in `report.txt`. Explain why there were 1996 calls to the encode function and why the score function was called 99800 times?
+**Exercise 3:** Open the report saved in `report.txt`. Explain why there were 1996 calls to the encode function and why the score function was called 99800 times?
 
-Exercise 4: Use another MBR method that is more efficient. What are the gains? 
+**Exercise 4:** Use another MBR method that is more efficient. What are the gains? 
 
-Exercise 5: Using [`comet-score command`](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command), whats the result of your MBR outputs in terms of COMET (Unbabel/wmt22-comet-da)? What is the score if we inscrease the number of candidates to 50?
+**Exercise 5:** Using [`comet-score command`](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command), whats the result of your MBR outputs in terms of COMET (Unbabel/wmt22-comet-da)? What is the score if we inscrease the number of candidates to 50?
 
-Exercise 6: Implement MBR with `bleurt` instead of COMET and measure the quality of the outputs using XCOMET.
+**Exercise 6:** Implement MBR with `bleurt` instead of COMET and measure the quality of the outputs using XCOMET.
 
-Exercise 7: Experiment with different numbers of candidates (e.g., 10, 20, 50, 100) and plot how the COMET score changes and how other metrics change. At what point do you see diminishing returns?
+**Exercise 7:** Experiment with different numbers of candidates (e.g., 10, 20, 50, 100) and plot how the COMET score changes and how other metrics change. At what point do you see diminishing returns?
