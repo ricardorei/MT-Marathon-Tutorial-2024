@@ -2,6 +2,16 @@
 
 Welcome to the MT-Marathon tutorial on combining Tower and EuroLLM with MBR Decoding (a powerful decoding strategy that finds the best translation among several candidates).
 
+## Learning objectives
+
+The main objective of this tutorial is to teach participants how to run inference with an LLM (using [vllm](https://github.com/vllm-project/vllm)) and how to perform MBR (using [mbrs](https://github.com/naist-nlp/mbrs)). In the tutorial, we will be using EuroLLM, which is practical for these experiments due to its small size. After completing the tutorial, you should be able to:
+1) Run inference on any LLM supported in VLLM (which includes practically any open-source LLM):
+  - After learning how to use VLLM for EuroLLM, you can easily adapt the code to run any other LLM like [Tower](https://huggingface.co/Unbabel/TowerInstruct-13B-v0.1), [Llama 3.1](meta-llama/Meta-Llama-3.1-8B-Instruct), etc
+2) Generate several candidates from a single prompt:
+  - This skill extends beyond translation. Once you're comfortable generating multiple candidates with VLLM, you can easily start building RLHF (Reinforcement Learning from Human Feedback) pipelines.
+3) Combine candidate translations using MBR:
+  - In machine translation, MBR is one of the most studied techniques for selecting the best candidate translation among several generations. By the end of the tutorial, you should be able to apply MBR on top of any of your models and potentially adapt it to other tasks.
+
 ## Install
 
 To run this tutorial we only need a couple of libraries installed: [transformers](https://github.com/huggingface/transformers), [vllm](https://github.com/vllm-project/vllm), [mbrs](https://github.com/naist-nlp/mbrs)
