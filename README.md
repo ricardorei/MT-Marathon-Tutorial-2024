@@ -62,7 +62,7 @@ Take a look at the samples that were generated. If you don't understand Spanish,
 
 **Exercise 1:** The code is using epsilon sampling. Change the code to use nucleus sampling instead. What changes do you observe?
 
-**Exercise 2:** Implement a simple baseline with greedy decoding. Evaluate it in terms of comet using [comet-score command](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command)
+**Exercise 2:** Implement a simple baseline with greedy decoding. Evaluate it in terms of comet using [SacreCOMET](https://github.com/PinzhenChen/sacrecomet)
 
 ## MBR decoding:
 
@@ -121,8 +121,21 @@ mbrs-decode data/mbr/en-es-samples-n10.txt \
 
 **Exercise 4:** Use another MBR method that is more efficient. What are the gains? 
 
-**Exercise 5:** Using [`comet-score command`](https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command), whats the result of your MBR outputs in terms of COMET (Unbabel/wmt22-comet-da)? What is the score if we inscrease the number of candidates to 50?
+**Exercise 5:** Using [`SacreCOMET`]([https://github.com/Unbabel/COMET?tab=readme-ov-file#basic-scoring-command](https://github.com/PinzhenChen/sacrecomet)), whats the result of your MBR outputs in terms of COMET (Unbabel/wmt22-comet-da)? What is the score if we inscrease the number of candidates to 50?
 
-**Exercise 6:** Implement MBR with `bleurt` instead of COMET and measure the quality of the outputs using XCOMET.
+**Exercise 6:** Implement MBR with `bleurt` (you can use [`DecoderProbabilisticMBR`](https://mbrs.readthedocs.io/en/latest/source/mbrs.decoders.probabilistic_mbr.html) for efficiency). Whats the XCOMET score?
 
 **Exercise 7:** Experiment with different numbers of candidates (e.g., 10, 20, 50, 100) and plot how the COMET score changes and how other metrics change. At what point do you see diminishing returns?
+
+## Final Remarks:
+
+I hope that with the above excercises and libraries you can now implement MBR in your projects and that you have learned new tools to evaluate your MT outputs. If you wish to learn more about these topics I'll leave here some links for you to explore:
+
+1) [MetricX](https://github.com/google-research/metricx/tree/main): An alternative to using COMET models to evaluate is to use MetricX. This can complement your evaluation when optimizing directly to COMET
+2) [Faster Minimum Bayes Risk Decoding with Confidence-based Pruning](https://aclanthology.org/2023.emnlp-main.767/): Best paper award from EMNLP last year (its already implemented in mbrs library)
+3) [Quality-Aware Translation Models: Efficient Generation and Quality Estimation in a Single Model](https://aclanthology.org/2024.acl-long.836.pdf): Related to the topic, uses a prompt to steer the model towards higher quality.
+4) [QUEST: Quality-Aware Metropolis-Hastings Sampling for Machine Translation](https://arxiv.org/abs/2406.00049): In this paper we study a method that tries to minimize the chances of "gaming the metric".
+5) [Introducing the NewsPaLM MBR and QE Dataset: LLM-Generated High-Quality Parallel Data Outperforms Traditional Web-Crawled Data](https://arxiv.org/abs/2408.06537): New paper from google that introduces a corpus where sentences were generated using MBR and Palm2.
+
+
+
