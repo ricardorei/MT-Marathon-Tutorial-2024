@@ -27,6 +27,12 @@ Then install the respective libraries:
 pip install transformers vllm mbrs
 ```
 
+`mbrs`can give a bit of trouble to install due to `mecab`. Try this:
+```
+sudo apt-get update
+sudo apt-get install mecab
+```
+
 ## Quick intro to Minimum Bayes Risk Decoding 
 
 Minimum Bayes Risk (MBR) decoding is a powerful technique used in machine translation to improve the quality of generated translations. Unlike traditional methods that simply output the most probable translation, MBR considers multiple candidate translations and selects the one that minimizes the expected loss (or maximizes the expected gain) with respect to the true translation.
@@ -55,7 +61,7 @@ The most expensive part of COMET is to compute the sentence embeddings for sourc
 We will start our tutorial by generating samples for English-Spanish (MX) using [EuroLLM 1.7B](utter-project/EuroLLM-1.7B-Instruct). This model is a small multilingual model trained on 4T tokens where part of the data is parallel. The model supports 32 languages.
 
 ```bash
-python generate_samples.py --lp en-es --num_candidates 20 --gpus 1 --output_file data/mbr/en-es-translations.jsonl
+python generate_samples.py --lp en-es --num_candidates 10 --gpus 1 --output_file data/mbr/en-es-samples-n10.txt
 ```
 
 Take a look at the samples that were generated. If you don't understand Spanish, try another language pair. How different are the samples from each other?
@@ -74,9 +80,10 @@ from mbrs.metrics import MetricCOMET
 from mbrs.decoders import DecoderMBR
 import pandas as pd
 
-mbr_data = pd.read_json("data/mbr/en-es-translations.jsonl", lines=True)
-HYPOTHESES = mbr_data["translations"].tolist()[1]
-SOURCE = mbr_data["source"].tolist()[1]
+mbr_translations = [s.strip() for s in open("data/mbr/en-es-samples-n10.txt").readlines()]
+sources = [s.strip() for s in open("data/sources/en-es.txt").readlines()]
+HYPOTHESES = mbr_translations[1]
+SOURCE = sources[1]
 
 # Setup COMET.
 metric_cfg = MetricCOMET.Config(
@@ -113,7 +120,7 @@ mbrs-decode data/mbr/en-es-samples-n10.txt \
     --metric comet \
     --metric.model Unbabel/wmt22-comet-da \
     --metric.batch_size 64 \
-    --metric.fp16 true
+    --metric.fp16 true \
     --output data/mbr/en-es-mbr-output.txt
 ```
 
