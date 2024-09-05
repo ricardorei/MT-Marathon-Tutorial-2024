@@ -58,7 +58,7 @@ The most expensive part of COMET is to compute the sentence embeddings for sourc
 
 ## Generating samples with VLLM:
 
-We will start our tutorial by generating samples for English-Spanish (MX) using [EuroLLM 1.7B](utter-project/EuroLLM-1.7B-Instruct). This model is a small multilingual model trained on 4T tokens where part of the data is parallel. The model supports 32 languages.
+We will start our tutorial by generating samples for English-Spanish (MX) using [EuroLLM 1.7B](utter-project/EuroLLM-1.7B-Instruct). This model is a small multilingual model trained on 4T tokens where part of the data is parallel. The model supports 32 languages: Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Irish, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish, Arabic, Catalan, Chinese, Galician, Hindi, Japanese, Korean, Norwegian, Russian, Turkish, and Ukrainian (including language variants).
 
 ```bash
 python generate_samples.py --lp en-es --num_candidates 10 --gpus 1 --output_file data/mbr/en-es-samples-n10.txt
