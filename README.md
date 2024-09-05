@@ -1,6 +1,6 @@
 # MT-Marathon-Tutorial-2024
 
-Welcome to the MT-Marathon tutorial on combining Tower and EuroLLM with MBR Decoding (a powerful decoding strategy that finds the best translation among several candidates).
+Welcome to the MT-Marathon tutorial on combining [EuroLLM](https://huggingface.co/utter-project/EuroLLM-1.7B-Instruct) with MBR Decoding (a powerful decoding strategy that finds the best translation among several candidates).
 
 ## Learning objectives
 
